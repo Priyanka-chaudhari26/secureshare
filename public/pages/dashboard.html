@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard</title>
+    <script type="module" src="../src/script.js"></script>
+    <script type="module" src="../src/dashboard.js"></script>
+    <link rel="stylesheet" href="../src/dashboard.css" />
+  </head>
+  <body>
+    <div id="profile">
+      <h1>Dashboard</h1>
+      <p id="welcome-text"></p>
+      <div class="profile-actions">
+        <a href="profile.html" target="_blank"><button>My Profile</button></a>
+        <button id="logout-btn">Logout</button>
+      </div>
+    </div>
+    <div class="custom-upload">
+      <label for="file-input" class="custom-file-upload">Choose File</label
+      ><br />
+      <span id="file-name">No file chosen</span>
+      <br />
+      <small
+        style="color: black; text-align: center; font-size: medium"
+        id="file-warning"
+      ></small>
+      <input type="file" id="file-input" />
+    </div>
+    <button id="upload-btn">Upload File</button>
+    <div id="file-list"></div>
+
+    <!-- Share Modal -->
+    <div
+      id="shareModal"
+      style="
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+      "
+    >
+      <div>
+        <div class="modal-content">
+          <!-- <span class="close" id="closeModal">&times;</span> -->
+          <h2>Share File</h2>
+
+          <!-- Option Tabs -->
+          <div style="margin-bottom: 10px">
+            <button id="emailOptionBtn">Share via Email</button>
+            <button id="linkOptionBtn">Generate Link</button>
+            <button
+              class="cancelShareBtn"
+              style="
+                background: #dc3545;
+                color: white;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 4px;
+              "
+            >
+              Cancel
+            </button>
+          </div>
+
+          <!-- Email Share Form -->
+          <div id="emailForm" style="display: none">
+            <label for="recipientEmail">Recipient Email:</label><br />
+            <input
+              type="email"
+              id="recipientEmail"
+              placeholder="example@mail.com"
+              style="width: 90%; margin-bottom: 10px"
+            /><br />
+            <label for="sharePassword">Password:</label><br />
+            <input
+              type="password"
+              id="sharePassword"
+              placeholder="Enter password"
+              style="width: 90%; margin-bottom: 10px"
+            /><br />
+            <label for="expiryDate">Expiry Date (optional):</label><br />
+            <input
+              type="datetime-local"
+              id="expiryDate"
+              style="width: 90%; margin-bottom: 15px"
+            /><br />
+            <button
+              id="sendShareBtn"
+              style="
+                margin-right: 5px;
+                background: #007bff;
+                color: white;
+                border: none;
+                padding: 8px 12px;
+                border-radius: 4px;
+              "
+            >
+              Share File
+            </button>
+            <!-- <button class="cancelShareBtn" style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px;">Cancel</button> -->
+            <p id="shareStatus" style="margin-top: 10px; color: green"></p>
+          </div>
+
+          <!-- Link Share Form -->
+          <div id="linkForm" style="display: none">
+            <label>Password:</label>
+            <input
+              type="password"
+              id="linkPassword"
+              placeholder="Set a password"
+              required
+            />
+
+            <label>Expiry (Optional):</label>
+            <input type="datetime-local" id="linkExpiry" />
+
+            <button id="generateLinkBtn">Generate Link</button>
+            <!-- <button class="cancelShareBtn" style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px;">Cancel</button> -->
+
+            <div id="linkContainer" style="display: none; margin-top: 10px">
+              <input
+                type="text"
+                id="generatedLink"
+                readonly
+                style="width: 80%"
+              />
+              <button id="copyLinkBtn">Copy Link</button>
+            </div>
+          </div>
+        </div>
+        <!-- -------------------------------------- -->
+        <!-- <h3>Share File</h3> -->
+        <!-- <label for="recipientEmail">Recipient Email:</label><br />
+    <input type="email" id="recipientEmail" placeholder="example@mail.com" style="width: 100%; margin-bottom: 10px;" /><br />
+    <label for="sharePassword">Password:</label><br />
+    <input type="password" id="sharePassword" placeholder="Enter password" style="width: 100%; margin-bottom: 10px;" /><br />
+    <label for="expiryDate">Expiry Date (optional):</label><br />
+    <input type="datetime-local" id="expiryDate" style="width: 100%; margin-bottom: 15px;" /><br />
+    <button id="sendShareBtn" style="margin-right: 5px; background: #007bff; color: white; border: none; padding: 8px 12px; border-radius: 4px;">Share File</button>
+    <button class="cancelShareBtn" style="background: #dc3545; color: white; border: none; padding: 8px 12px; border-radius: 4px;">Cancel</button>
+    <p id="shareStatus" style="margin-top: 10px; color: green;"></p> -->
+      </div>
+    </div>
+  </body>
+</html>
