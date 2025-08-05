@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Secure Share - Verify OTP</title>
-    <link rel="stylesheet" href="../src/style.css" />
-    
+    <link rel="stylesheet" href="/src/style.css" />
+    <script type="module" src="/src/Verify.js"></script>
 </head>
 <body>
     <div class="container">
@@ -17,19 +17,5 @@
         <p>Already verified? <a href="login.html">Login here</a></p>
     </div>
 
-    <script type="module">
-        import { verifyOtp } from "../src/script.js";
-
-        document.getElementById('verify-btn').addEventListener('click', () => {
-            const email = document.getElementById('verify-email').value;
-            const otp = document.getElementById('otp-input').value;
-
-            if (email && otp) {
-                verifyOtp(email, otp);
-            } else {
-                alert('Please enter your email and OTP!');
-            }
-        });
-    </script>
 </body>
 </html>
